@@ -10,7 +10,7 @@ The following is a walkthrough and explanation using much of his code, but focus
 </p>
 
 <p align = 'center'>
-*The style transfer of Escher took ~8 hours using an AWS EC2 instance p2.xlarge*
+The style transfer of Escher took ~8 hours using an AWS EC2 instance 'p2.xlarge'
 </p>
 
 If you don't want to train your own network on a new artist's style, there are models already trained for Picasso, Afremov, Munch, Turner, Udnie, and Hokusai:
@@ -27,7 +27,7 @@ If you don't want to train your own network on a new artist's style, there are m
 </p>
 
 <p align = 'center'>
-*Here's one I did for Picasso's hometown of Malaga*
+Here's one I did for Picasso's hometown of Malaga
 </p>
 
 <p align = 'center'>
@@ -44,7 +44,7 @@ You will need the following:
   - AWS EC2 access / personal GPU
   - All the required NVIDIA software to run TF on a GPU (cuda, etc)
 
-## Applying Style Using Pre-trained Model
+## Applying Style Using Pre-trained Models
 Use `evaluate.py` to apply style to a picture. In a terminal, run `python evaluate.py` to view all the possible parameters. **Models for evaluation are [located here](https://drive.google.com/drive/folders/0B9jhaT37ydSyRk9UX0wwX3BpMzQ?usp=sharing)**. 
 
 Once you have the correct packages, style can easily be applied by typing in a terminal:
@@ -62,13 +62,19 @@ The second sets the path to your original images you would like to have the styl
 The third line is the directory where the final images will be dropped.
 
 ## Training Style Transfer Networks
-`style.py` is what we'll use to train for a new artist's style. Training takes 4-8 hours on a AWS EC2 instance `p2.xlarge`. **Before you run this, you should run `setup.sh`**. Example usage:
+`style.py` is what we'll use to train for a new artist's style. Training takes 4-8 hours on a AWS EC2 instance `p2.xlarge`.
 
-If you're like most of the world, you don't have access to a GPU for training, so we're going to have to setup an AWS instance. Thankfully, this is quite easy.
+If you're like most of the world, you don't have access to a GPU for training, so we're going to have to setup an AWS instance. Thankfully, this is quite easy, and fairly cheap.
 
 ### AWS Setup
 
 *(PLACEHOLDER)*
+
+### Training
+
+**Before you run the code below, you need to run `setup.sh` to get the VGG19 Model and training data** (note: the training data is ~12GB).
+
+Example usage for training(to be ran on the GPU):
 ```sh
 python style.py --style path/to/style/img.jpg \
   --checkpoint-dir checkpoint/path \
